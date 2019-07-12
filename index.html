@@ -11,8 +11,12 @@
 <body>
 
     <div id="root">
-    <input type="text" id="input" v-model="message">
-    <p>the value of input= {{ message }}</p>
+    <ul>
+        <li v-for="bork in dogs">{{ bork }}</li>
+    </ul>
+        <input id="input" type="text" v-model="newDog">
+        <button v-on:click="addDog">add doggo</button>
+        <button v-on:click="removeDog">remove doggo</button>
     </div>
 
 
@@ -22,7 +26,19 @@
 new Vue({
     el: '#root',
     data: {
-        message: 'dynamic update!'
+
+        newDog: '',
+
+        dogs: ['felix', 'bob', 'Wodan']
+    },
+    methods: {
+        addDog() {
+                this.dogs.push(this.newDog);
+        },
+        removeDog() {
+                alert('Why are you so cruel to remove a doggo?!');
+        }
+        
     }
 })
 
