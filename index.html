@@ -2,47 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-
     <title>Document</title>
 </head>
 <body>
-
     <div id="root">
-    <ul>
-        <li v-for="bork in dogs">{{ bork }}</li>
-    </ul>
-        <input id="input" type="text" v-model="newDog">
-        <button v-on:click="addDog">add doggo</button>
-        <button v-on:click="removeDog">remove doggo</button>
+
+        <h1> all tasks </h1>
+       <ul>
+
+        <li v-for="task in tasks" v-text="task.description"> </li>
+
+       </ul>
+
+       <h1>to be completed </h1>
+       <ul>
+
+        <li v-for="task in incompleteTasks" v-text="task.description"> </li>
+
+       </ul>
+
     </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+   
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
 <script>
 
 new Vue({
     el: '#root',
     data: {
+       tasks: [
 
-        newDog: '',
+           { description: 'go to the store', completed: true },
+           { description: 'go to the butcher', completed: true },
+           { description: 'go make food', completed: false },
+           { description: 'eat dinner', completed: false },
+           { description: 'lounge', completed: false }
 
-        dogs: ['felix', 'bob', 'Wodan']
-    },
-    methods: {
-        addDog() {
-                this.dogs.push(this.newDog);
-        },
-        removeDog() {
-                alert('Why are you so cruel to remove a doggo?!');
-        }
+       ]
+       },
+
+       computed: {
         
-    }
+           incompleteTasks() {
+               return this.tasks.filter(task => ! task.completed);  
+           }
+       }
 })
-
-
 </script>
 </body>
 </html>
