@@ -7,46 +7,19 @@
 <body>
     <div id="root">
 
-        <h1> all tasks </h1>
-       <ul>
+       <task>go to bank</task>
+       <task>go to store</task>
+       <task>go lounge</task>
+       <task>go sleep</task>
+       
 
-        <li v-for="task in tasks" v-text="task.description"> </li>
 
-       </ul>
 
-       <h1>to be completed </h1>
-       <ul>
-
-        <li v-for="task in incompleteTasks" v-text="task.description"> </li>
-
-       </ul>
 
     </div>
    
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
-<script>
+<script src="script.js"></script>
 
-new Vue({
-    el: '#root',
-    data: {
-       tasks: [
-
-           { description: 'go to the store', completed: true },
-           { description: 'go to the butcher', completed: true },
-           { description: 'go make food', completed: false },
-           { description: 'eat dinner', completed: false },
-           { description: 'lounge', completed: false }
-
-       ]
-       },
-
-       computed: {
-        
-           incompleteTasks() {
-               return this.tasks.filter(task => ! task.completed);  
-           }
-       }
-})
-</script>
 </body>
 </html>
